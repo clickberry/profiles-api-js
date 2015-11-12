@@ -47,7 +47,7 @@
 
         $.ajax({
             url: url + '/' + id,
-            type: 'POST',
+            type: 'PUT',
             headers: {'Authorization': 'JWT ' + access_token},
             data: data
           })
