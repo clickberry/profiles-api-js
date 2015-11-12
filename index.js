@@ -39,13 +39,18 @@
       },
 
       // Update profile info
-      update: function (id, email, name, fn) {
+      update: function (id, email, name, access_token, fn) {
         var data = {
           email: email,
           name: name
         };
 
-        $.post(url + '/' + id, data)
+        $.ajax({
+            url: url + '/' + id,
+            type: 'POST',
+            headers: {'Authorization': 'JWT ' + access_token},
+            data: data
+          })
           .done(function(result) {
             fn(null, result);
           })
