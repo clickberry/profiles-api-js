@@ -6,7 +6,7 @@
 
   var clbr = window.clbr = window.clbr || {};
 
-  clbr.authApi = function (url) {
+  clbr.profilesApi = function (url) {
     return {
       // Get full profile info
       get: function (id, access_token, fn) {
