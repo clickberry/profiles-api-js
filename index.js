@@ -39,14 +39,15 @@
       },
 
       // Update profile info
-      update: function (id, email, name, access_token, fn) {
+      update: function (params, access_token, fn) {
         var data = {
-          email: email,
-          name: name
+          email: params.email,
+          name: params.name,
+          avatarUrl: params.avatarUrl
         };
 
         $.ajax({
-            url: url + '/' + id,
+            url: url + '/' + params.id,
             type: 'PUT',
             headers: {'Authorization': 'JWT ' + access_token},
             data: data
