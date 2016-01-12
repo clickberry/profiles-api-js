@@ -24,11 +24,24 @@
       },
 
       // Get public profile info
-      public: function (id, access_token, fn) {
+      public: function (id, fn) {
         $.ajax({
             url: url + '/public/' + id,
-            type: 'GET',
-            headers: {'Authorization': 'JWT ' + access_token}
+            type: 'GET'
+          })
+          .done(function(result) {
+            fn(null, result);
+          })
+          .fail(function(jqXHR, textStatus, err) {
+            fn(err);
+          });
+      },
+
+      // Get public profile info
+      list: function (ids, fn) {
+        $.ajax({
+            url: url + '/public/list/' + ids.join(','),
+            type: 'GET'
           })
           .done(function(result) {
             fn(null, result);
